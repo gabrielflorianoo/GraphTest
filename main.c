@@ -7,15 +7,22 @@ int main()
     Graph *c = create();
     insertDist(c, 2);
 
-    insertPoint(g, c);
-
     Graph *c2 = create();
-    insertDist(c2, 5);
+    insertDist(c2, 3);
 
-    insertPoint(g, c2);
-
-    printf("Parent: %d, Child: %d, Child2: %d\n", g->distance, g->graphs[0]->distance, g->graphs[1]->distance);
+    Graph *c3 = create();
+    insertDist(c3, 4);
     
-    deletePoint(g, 5);
+    Graph *c4 = create();
+    insertDist(c4, 5);
+
+    insertPoint(g, c);
+    insertPoint(g, c2);
+    insertPoint(g, c3);
+    insertPoint(g, c4);
+    
+    printf("Child: %d, %d\n", g->graphs[1]->distance, g->graphs[2]->distance);
+    
+    // deletePoint(g, 3);
     return 0;
 }

@@ -3,10 +3,10 @@
 
 typedef struct Graph
 {
-    int distance; // Distance of the Graph
-    int gSize;    // Amount of graphs that is attached
-    int capacity; // Capacity of the graphs array
-    struct Graph **graphs;  // Array of graphs
+    int distance; 
+    int gSize;
+    int capacity; 
+    struct Graph **graphs;  
 } Graph;
 
 Graph *create();

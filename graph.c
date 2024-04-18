@@ -8,7 +8,7 @@ Graph *create()
     g->distance = 0;
     g->capacity = 2;
     g->gSize = 0;
-    g->graphs = (Graph**)malloc(sizeof(Graph*));
+    g->graphs = (Graph**)malloc(2 * sizeof(Graph*));
     if (!g->graphs)
     {
         printf("Could not allocate memory for the graphs");
@@ -43,7 +43,7 @@ void expandGraphsArray(Graph *g)
 }
 
 void insertPoint(Graph *graph, Graph *child)
-{   
+{
     expandGraphsArray(graph);
     graph->graphs[graph->gSize++] = child;
 }
@@ -51,6 +51,7 @@ void insertPoint(Graph *graph, Graph *child)
 void removeFirst(Graph *g)
 {
     printf("Deleted with distance: %d\n", g->graphs[0]->distance);
+
     free(g->graphs[0]);
     for (int i = 1; i < g->gSize; i++)
     {
@@ -61,7 +62,14 @@ void removeFirst(Graph *g)
 
 void removeAtPoint(Graph* g, int point)
 {
-    printf("TODO\n");
+    printf("Deleted with distance: %d\n", g->graphs[point]->distance);
+
+    free(g->graphs[point]);
+    for (int i = point; i < g->gSize - 1; i++)
+    {
+        g->graphs[i] = g->graphs[i + 1];
+    }
+    g->gSize--;
 }
 
 void removeLast(Graph *g)
@@ -77,6 +85,7 @@ void deletePoint(Graph *graph, int distance)
     for (int i = 0; i < graph->gSize; i++)
     {
         Graph *child = graph->graphs[i];
+
         if (child->distance == distance)
         {
             // Remove First
