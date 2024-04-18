@@ -50,20 +50,24 @@ void insertPoint(Graph *graph, Graph *child)
 
 void removeFirst(Graph *g)
 {
+    printf("Deleted with distance: %d\n", g->graphs[0]->distance);
     free(g->graphs[0]);
-    for (int i = 0; i < g->gSize - 1; i++)
+    for (int i = 1; i < g->gSize; i++)
     {
-
+        g->graphs[i - 1] = g->graphs[i];
     }
+    g->gSize--;
 }
 
 void removeAtPoint(Graph* g, int point)
 {
-
+    printf("TODO\n");
 }
 
 void removeLast(Graph *g)
 {
+    printf("Deleted with distance: %d\n", g->graphs[g->gSize - 1]->distance);
+
     free(g->graphs[g->gSize]);
     g->graphs[g->gSize--];
 }
@@ -72,12 +76,20 @@ void deletePoint(Graph *graph, int distance)
 {
     for (int i = 0; i < graph->gSize; i++)
     {
-        Graph child = graph->graphs[i];
+        Graph *child = graph->graphs[i];
         if (child->distance == distance)
         {
             // Remove First
-            // Remove At Point
+            if (i == 0)
+                removeFirst(graph);
             // Remove Last
+            else if (i == graph->gSize - 1)
+                removeLast(graph);
+            // Remove At Point
+            else
+                removeAtPoint(graph, i);
+
+            break;
         }
     }
 }

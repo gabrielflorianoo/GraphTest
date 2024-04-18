@@ -15,6 +15,7 @@ int main()
     insertPoint(g, c2);
 
     printf("Parent: %d, Child: %d, Child2: %d\n", g->distance, g->graphs[0]->distance, g->graphs[1]->distance);
-
+    
+    deletePoint(g, 5);
     return 0;
 }
