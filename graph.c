@@ -47,3 +47,37 @@ void insertPoint(Graph *graph, Graph *child)
     expandGraphsArray(graph);
     graph->graphs[graph->gSize++] = child;
 }
+
+void removeFirst(Graph *g)
+{
+    free(g->graphs[0]);
+    for (int i = 0; i < g->gSize - 1; i++)
+    {
+
+    }
+}
+
+void removeAtPoint(Graph* g, int point)
+{
+
+}
+
+void removeLast(Graph *g)
+{
+    free(g->graphs[g->gSize]);
+    g->graphs[g->gSize--];
+}
+
+void deletePoint(Graph *graph, int distance)
+{
+    for (int i = 0; i < graph->gSize; i++)
+    {
+        Graph child = graph->graphs[i];
+        if (child->distance == distance)
+        {
+            // Remove First
+            // Remove At Point
+            // Remove Last
+        }
+    }
+}

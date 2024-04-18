@@ -13,5 +13,9 @@ Graph *create();
 void insertDist(Graph *g, int distance);
 void expandGraphsArray(Graph *g);
 void insertPoint(Graph *graph, Graph *child);
+void removeFirst(Graph *g);
+void removeAtPoint(Graph* g, int point);
+void removeLast(Graph *g);
+void deletePoint(Graph *graph, int distance);
 
 #endif
