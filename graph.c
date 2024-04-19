@@ -5,6 +5,7 @@ Graph *create() {
     g->distance = 0;
     g->capacity = 2;
     g->gSize = 0;
+    g->visited = 0;
     g->graphs = (Graph **)malloc(2 * sizeof(Graph *));
     if (!g->graphs) {
         printf("Could not allocate memory for the graphs");
@@ -119,7 +120,26 @@ void freeGraph(Graph *g) {
 }
 
 int depthFirstSearch(Graph *g, int target) {
-    Graph **visited = (Graph **)malloc(sizeof(Graph *));
+    // visited must be a varible in the Graph struct
+    if (g->visited) {
+        return 0;
+    }
 
-    
+    g->visited = 1;
+
+    if (g->distance == target) {
+        printf("Graph Found!\n");
+        return 1;
+    }
+
+
+    for (int i = 0; i < g->gSize; i++) {
+        if (g->graphs[i] != NULL) {
+            int found = depthFirstSearch(g->graphs[i], target);
+            if (found) {
+                return 1;
+            }
+        }
+    }
+    return 0;
 }

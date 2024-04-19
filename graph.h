@@ -7,6 +7,7 @@ typedef struct Graph
 {
     int distance; 
     int gSize;
+    int visited;
     int capacity; 
     struct Graph **graphs;  
 } Graph;

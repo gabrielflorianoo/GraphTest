@@ -37,8 +37,12 @@ int main()
         printf("%d ", g->graphs[i]->distance);
     }
     printf("\n");
-
-    freeGraph(g);
+    
+    int target = 5;
+    int dpf = depthFirstSearch(g, target);
+    if (dpf == 0) {
+        printf("node with distance %d, not found\n", target);
+    }
 
     return 0;
 }
