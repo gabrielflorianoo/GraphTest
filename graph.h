@@ -23,5 +23,7 @@ void deletePoint(Graph *graph, int distance);
 void printChilds(Graph *g);
 void freeGraph(Graph *g);
 int depthFirstSearch(Graph *g, int target);
+int isTree(Graph *g);
+void resetVisited(Graph *g);
 
 #endif

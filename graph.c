@@ -106,7 +106,7 @@ void printChilds(Graph *g) {
 }
 
 void freeGraph(Graph *g) {
-    if (g->graphs != NULL) {
+    if (!g->graphs) {
         for (int i = 0; i < g->gSize; i++) {
             if (g->graphs[i] != NULL) {
                 freeGraph(g->graphs[i]); // Recursively free child graphs
@@ -141,5 +141,42 @@ int depthFirstSearch(Graph *g, int target) {
             }
         }
     }
+
     return 0;
+}
+
+int isTree(Graph *g) {
+    if (g->visited) {
+        return 0;
+    }
+
+    g->visited = 1;
+    
+    for (int i = 0; i < g->gSize; i++) {
+        if (g->graphs[i] != NULL) {
+            int is_tree = isTree(g->graphs[i]);
+            if (!is_tree) {
+                return 0;
+            }
+        }
+    }
+
+    if (g->gSize <= 2 && g->gSize > 0) {
+        return 0;
+    }
+
+    return 1;
+}
+
+void resetVisited(Graph *g) {
+    if (g == NULL) {
+        printf("The Graph is null");
+        return;
+    }
+
+    g->visited = 0;
+
+    for (int i = 0; i < g->gSize; i++) {
+        resetVisited(g->graphs[i]);
+    }
 }
