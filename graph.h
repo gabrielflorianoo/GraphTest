@@ -1,5 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Graph
 {
@@ -17,5 +19,8 @@ void removeFirst(Graph *g);
 void removeAtPoint(Graph* g, int point);
 void removeLast(Graph *g);
 void deletePoint(Graph *graph, int distance);
+void printChilds(Graph *g);
+void freeGraph(Graph *g);
+int depthFirstSearch(Graph *g, int target);
 
 #endif

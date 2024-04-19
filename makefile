@@ -1,3 +1,3 @@
 all:
-	@ gcc main.c -o main.exe
+	@ gcc graph.c main.c -o main.exe
 	@ ./main.exe
